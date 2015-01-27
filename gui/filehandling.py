@@ -100,7 +100,7 @@ class FileHandler(object):
         ]
         self.ext2saveformat = {
             ".ora": (SAVE_FORMAT_ORA, "image/openraster"),
-            ".png": (SAVE_FORMAT_PNGSOLID, "image/png"),
+            ".png": (SAVE_FORMAT_PNGTRANS, "image/png"),
             ".jpeg": (SAVE_FORMAT_JPEG, "image/jpeg"),
             ".jpg": (SAVE_FORMAT_JPEG, "image/jpeg"),
         }

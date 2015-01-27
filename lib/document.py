@@ -783,7 +783,7 @@ class Document (object):
                     time.time() - t0)
         return pixbuf
 
-    def save_png(self, filename, alpha=False, multifile=False, **kwargs):
+    def save_png(self, filename, alpha=True, multifile=False, **kwargs):
         """Save to one or more PNG files"""
         if multifile:
             self._save_multi_file_png(filename, **kwargs)
@@ -800,7 +800,7 @@ class Document (object):
             **kwargs
         )
 
-    def _save_multi_file_png(self, filename, alpha=False, **kwargs):
+    def _save_multi_file_png(self, filename, **kwargs):
         """Save to multiple suffixed PNG files"""
         prefix, ext = os.path.splitext(filename)
         # if we have a number already, strip it
@@ -810,7 +810,7 @@ class Document (object):
         doc_bbox = self.get_effective_bbox()
         for i, l in enumerate(self.layer_stack.deepiter()):
             filename = '%s.%03d%s' % (prefix, i+1, ext)
-            l.save_as_png(filename, *doc_bbox, **kwargs)
+            l.save_as_png(filename, *doc_bbox, alpha=True, **kwargs)
 
     def load_png(self, filename, feedback_cb=None):
         """Load (speedily) from a PNG file"""
